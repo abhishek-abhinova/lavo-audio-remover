@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - lavo</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-text">lavo</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="support.html" class="nav-link">Support</a>
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserMenu()">
+                        <span>JD</span>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="settings.html">Settings</a>
+                        <a href="#" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <h3>Menu</h3>
+                    <nav class="sidebar-nav">
+                        <a href="#overview" class="sidebar-link active" onclick="showSection('overview')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                                <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                                <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                                <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Overview
+                        </a>
+                        <a href="#history" class="sidebar-link" onclick="showSection('history')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            History
+                        </a>
+                        <a href="settings.html" class="sidebar-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 1v6m0 6v6" stroke="currentColor" stroke-width="2"/>
+                                <path d="m21 12-6-6-6 6" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Settings
+                        </a>
+                        <a href="support.html" class="sidebar-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Support
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="upgrade-card">
+                        <div class="upgrade-icon">✨</div>
+                        <h4>Upgrade to Premium</h4>
+                        <p>Unlock unlimited conversions and faster processing</p>
+                        <button class="upgrade-btn" onclick="window.location.href='pricing.html'">
+                            Upgrade Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section active">
+                <div class="section-header">
+                    <h1>Dashboard Overview</h1>
+                    <button class="new-conversion-btn" onclick="window.location.href='upload.html'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2"/>
+                            <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        New Conversion
+                    </button>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Conversions</h3>
+                            <div class="stat-value">24</div>
+                            <div class="stat-change positive">+12% this month</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Storage Saved</h3>
+                            <div class="stat-value">2.4 GB</div>
+                            <div class="stat-change positive">+340 MB this week</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Avg. Processing Time</h3>
+                            <div class="stat-value">42s</div>
+                            <div class="stat-change negative">+5s slower</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card premium">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Plan Status</h3>
+                            <div class="stat-value">Free</div>
+                            <div class="stat-change">3/5 daily conversions used</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="activity-section">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <polyline points="20,6 9,17 4,12" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Video processed successfully</div>
+                                <div class="activity-description">presentation_final.mp4 • 25.4 MB → 18.2 MB</div>
+                                <div class="activity-time">2 hours ago</div>
+                            </div>
+                            <button class="activity-action" onclick="downloadFile('presentation_final.mp4')">
+                                Download
+                            </button>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <polyline points="20,6 9,17 4,12" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Audio extracted</div>
+                                <div class="activity-description">meeting_recording.mp4 • Audio saved as MP3</div>
+                                <div class="activity-time">1 day ago</div>
+                            </div>
+                            <button class="activity-action" onclick="downloadFile('meeting_audio.mp3')">
+                                Download
+                            </button>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <polyline points="20,6 9,17 4,12" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Batch processing completed</div>
+                                <div class="activity-description">3 videos processed • Total size reduced by 45%</div>
+                                <div class="activity-time">3 days ago</div>
+                            </div>
+                            <button class="activity-action" onclick="viewBatch('batch_001')">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section id="history" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Conversion History</h1>
+                    <div class="history-controls">
+                        <div class="search-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <input type="text" placeholder="Search files..." id="historySearch">
+                        </div>
+                        <select class="filter-select" id="historyFilter">
+                            <option value="all">All Files</option>
+                            <option value="video">Videos Only</option>
+                            <option value="audio">Audio Only</option>
+                            <option value="recent">Recent</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="history-grid">
+                    <div class="history-item">
+                        <div class="history-thumbnail">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                <polygon points="23,7 16,12 23,17" stroke="currentColor" stroke-width="2"/>
+                                <rect x="1" y="5" width="15" height="14" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="history-details">
+                            <h3>presentation_final.mp4</h3>
+                            <div class="history-meta">
+                                <span>18.2 MB</span>
+                                <span>1920x1080</span>
+                                <span>2:34</span>
+                            </div>
+                            <div class="history-date">Processed 2 hours ago</div>
+                        </div>
+                        <div class="history-actions">
+                            <button class="action-btn" onclick="downloadFile('presentation_final.mp4')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="2"/>
+                                    <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                            <button class="action-btn" onclick="shareFile('presentation_final.mp4')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                            <button class="action-btn delete" onclick="deleteFile('presentation_final.mp4')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <polyline points="3,6 5,6 21,6" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6m3,0V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState" style="display: none;">
+                        <div class="empty-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3>No conversions yet</h3>
+                        <p>Start by uploading your first video to remove audio</p>
+                        <button class="empty-action-btn" onclick="window.location.href='upload.html'">
+                            Upload Video
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts/dashboard.js"></script>
+</body>
+</html>

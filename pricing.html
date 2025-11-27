@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - lavo</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pricing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-text">lavo</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="support.html" class="nav-link">Support</a>
+                <a href="login.html" class="nav-link login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pricing Hero -->
+    <section class="pricing-hero">
+        <div class="container">
+            <div class="pricing-header">
+                <h1>Choose Your Plan</h1>
+                <p>Start free, upgrade when you need more power</p>
+                
+                <!-- Billing Toggle -->
+                <div class="billing-toggle">
+                    <span class="billing-label">Monthly</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="billingToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="billing-label">
+                        Yearly 
+                        <span class="discount-badge">Save 20%</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="pricing-plans" id="pricing">
+        <div class="container">
+            <div class="plans-grid">
+                <!-- Free Plan -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Free</h3>
+                        <div class="plan-price">
+                            <span class="price">$0</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="plan-description">Perfect for trying out lavo</p>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>5 conversions per day</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Max 100MB file size</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Standard processing speed</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Basic video formats</span>
+                        </div>
+                        <div class="feature-item disabled">
+                            <span class="feature-icon">❌</span>
+                            <span>Ads supported</span>
+                        </div>
+                        <div class="feature-item disabled">
+                            <span class="feature-icon">❌</span>
+                            <span>No batch processing</span>
+                        </div>
+                    </div>
+                    
+                    <button class="plan-btn" onclick="selectPlan('free')">
+                        Get Started Free
+                    </button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="plan-card premium">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="plan-header">
+                        <h3>Premium</h3>
+                        <div class="plan-price">
+                            <span class="price monthly-price">$9.99</span>
+                            <span class="price yearly-price" style="display: none;">$7.99</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="plan-description">For professionals and power users</p>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Unlimited conversions</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Max 2GB file size</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>3x faster processing</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>All video formats</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>No ads</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Batch processing</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Cloud history</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Priority support</span>
+                        </div>
+                    </div>
+                    
+                    <button class="plan-btn premium-btn" onclick="selectPlan('premium')">
+                        <span class="btn-icon">✨</span>
+                        Upgrade to Premium
+                    </button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Enterprise</h3>
+                        <div class="plan-price">
+                            <span class="price">Custom</span>
+                        </div>
+                        <p class="plan-description">For teams and organizations</p>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Everything in Premium</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>API access</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Custom integrations</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Team management</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Advanced analytics</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>24/7 dedicated support</span>
+                        </div>
+                    </div>
+                    
+                    <button class="plan-btn" onclick="contactSales()">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Comparison -->
+    <section class="features-comparison">
+        <div class="container">
+            <h2 class="section-title">Feature Comparison</h2>
+            
+            <div class="comparison-table">
+                <div class="table-header">
+                    <div class="feature-col">Features</div>
+                    <div class="plan-col">Free</div>
+                    <div class="plan-col premium">Premium</div>
+                    <div class="plan-col">Enterprise</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="feature-name">Daily conversions</div>
+                    <div class="feature-value">5</div>
+                    <div class="feature-value">Unlimited</div>
+                    <div class="feature-value">Unlimited</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="feature-name">Max file size</div>
+                    <div class="feature-value">100MB</div>
+                    <div class="feature-value">2GB</div>
+                    <div class="feature-value">Unlimited</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="feature-name">Processing speed</div>
+                    <div class="feature-value">Standard</div>
+                    <div class="feature-value">3x faster</div>
+                    <div class="feature-value">5x faster</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="feature-name">Batch processing</div>
+                    <div class="feature-value">❌</div>
+                    <div class="feature-value">✅</div>
+                    <div class="feature-value">✅</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="feature-name">API access</div>
+                    <div class="feature-value">❌</div>
+                    <div class="feature-value">❌</div>
+                    <div class="feature-value">✅</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I cancel my subscription anytime?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel your subscription at any time. You'll continue to have access to premium features until the end of your billing period.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Is there a free trial for Premium?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 7-day free trial for Premium. No credit card required to start your trial.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What payment methods do you accept?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards, PayPal, and bank transfers for Enterprise plans.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do you store my video files?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, we automatically delete all files after processing. Premium users can optionally save files to cloud history.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to get started?</h2>
+                <p>Join thousands of users who trust lavo for their video processing needs</p>
+                <div class="cta-buttons">
+                    <button class="cta-btn primary" onclick="window.location.href='index.html'">
+                        Start Free
+                    </button>
+                    <button class="cta-btn secondary" onclick="selectPlan('premium')">
+                        Go Premium
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="scripts/pricing.js"></script>
+</body>
+</html>

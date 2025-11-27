@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing Video - lavo</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/processing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-text">lavo</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="support.html" class="nav-link">Support</a>
+                <a href="login.html" class="nav-link login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Processing Section -->
+    <section class="processing-section">
+        <div class="container">
+            <div class="processing-container">
+                <!-- Progress Box -->
+                <div class="progress-box">
+                    <div class="progress-circle">
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring-bg" cx="60" cy="60" r="54" stroke="#E5E7EB" stroke-width="4" fill="transparent"/>
+                            <circle class="progress-ring-fill" cx="60" cy="60" r="54" stroke="url(#gradient)" stroke-width="4" fill="transparent" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#6A4DFF"/>
+                                    <stop offset="100%" style="stop-color:#C084FC"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="progress-content">
+                            <span class="progress-percentage" id="progressPercentage">0%</span>
+                            <div class="progress-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-info">
+                        <h2 id="progressTitle">Analyzing Audio Stream...</h2>
+                        <p id="progressDescription">Preparing your video for processing</p>
+                        
+                        <div class="progress-steps">
+                            <div class="step-item active" id="step1">
+                                <div class="step-dot"></div>
+                                <span>Analyzing Audio</span>
+                            </div>
+                            <div class="step-item" id="step2">
+                                <div class="step-dot"></div>
+                                <span>Removing Audio</span>
+                            </div>
+                            <div class="step-item" id="step3">
+                                <div class="step-dot"></div>
+                                <span>Encoding Final File</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Info Card -->
+                <div class="file-info-card">
+                    <div class="file-thumbnail">
+                        <video id="processingVideo" muted>
+                            <source src="#" type="video/mp4">
+                        </video>
+                        <div class="processing-overlay">
+                            <div class="processing-spinner"></div>
+                        </div>
+                    </div>
+                    <div class="file-details">
+                        <h3 id="processingFileName">sample_video.mp4</h3>
+                        <div class="file-meta">
+                            <span id="processingFileSize">25.4 MB</span>
+                            <span id="processingFileDuration">2:34</span>
+                            <span id="processingFileResolution">1920x1080</span>
+                        </div>
+                        <div class="processing-options">
+                            <div class="option-tag">Remove Audio</div>
+                            <div class="option-tag">High Quality</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips Box -->
+                <div class="tips-box">
+                    <div class="tips-header">
+                        <div class="tips-icon">💡</div>
+                        <h3>Processing Tips</h3>
+                    </div>
+                    <div class="tips-content">
+                        <div class="tip-item">
+                            <div class="tip-icon">⚠️</div>
+                            <span>Don't close this tab during processing</span>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">⚡</div>
+                            <span>Upgrade to Premium for 3x faster processing</span>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">🔒</div>
+                            <span>Your file will be automatically deleted after download</span>
+                        </div>
+                    </div>
+                    <button class="upgrade-btn" onclick="window.location.href='pricing.html'">
+                        Upgrade to Premium
+                    </button>
+                </div>
+
+                <!-- Processing Stats -->
+                <div class="processing-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="timeElapsed">00:15</div>
+                        <div class="stat-label">Time Elapsed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="timeRemaining">00:45</div>
+                        <div class="stat-label">Est. Remaining</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="processingSpeed">2.1x</div>
+                        <div class="stat-label">Processing Speed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Background Animation -->
+    <div class="processing-background">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+    </div>
+
+    <script src="scripts/processing.js"></script>
+</body>
+</html>

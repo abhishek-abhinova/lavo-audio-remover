@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Ready - lavo</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/result.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-text">lavo</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="support.html" class="nav-link">Support</a>
+                <a href="login.html" class="nav-link login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Result Section -->
+    <section class="result-section">
+        <div class="container">
+            <!-- Success Animation -->
+            <div class="success-animation">
+                <div class="success-circle">
+                    <svg class="checkmark" width="64" height="64" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" class="checkmark-circle"/>
+                        <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="checkmark-path"/>
+                    </svg>
+                </div>
+                <h1 class="success-title">Your Video Is Ready!</h1>
+                <p class="success-subtitle">Audio has been successfully removed from your video</p>
+            </div>
+
+            <div class="result-container">
+                <!-- Video Preview -->
+                <div class="video-preview-card">
+                    <div class="preview-header">
+                        <h3>Preview & Download</h3>
+                        <div class="processing-time">
+                            <span class="time-icon">⚡</span>
+                            Processed in 42 seconds
+                        </div>
+                    </div>
+                    
+                    <div class="video-player">
+                        <video id="resultVideo" controls>
+                            <source src="#" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Resolution:</span>
+                            <span class="detail-value" id="videoResolution">1920x1080</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">File Size:</span>
+                            <span class="detail-value" id="videoSize">18.2 MB</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Duration:</span>
+                            <span class="detail-value" id="videoDuration">2:34</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Format:</span>
+                            <span class="detail-value" id="videoFormat">MP4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Options -->
+                <div class="download-options">
+                    <h3>Download Options</h3>
+                    
+                    <div class="download-cards">
+                        <div class="download-card primary">
+                            <div class="download-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="2"/>
+                                    <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="download-content">
+                                <h4>Download Video (Muted)</h4>
+                                <p>Original video without audio track</p>
+                                <span class="file-size">18.2 MB • MP4</span>
+                            </div>
+                            <button class="download-btn" onclick="downloadFile('video')">
+                                Download
+                            </button>
+                        </div>
+
+                        <div class="download-card">
+                            <div class="download-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 1v6m0 6v6" stroke="currentColor" stroke-width="2"/>
+                                    <path d="m21 12-6-6-6 6" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="download-content">
+                                <h4>Download Extracted Audio</h4>
+                                <p>Audio track saved as MP3 file</p>
+                                <span class="file-size">3.1 MB • MP3</span>
+                            </div>
+                            <button class="download-btn secondary" onclick="downloadFile('audio')">
+                                Download
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Share Options -->
+                    <div class="share-section">
+                        <h4>Share & Save</h4>
+                        <div class="share-options">
+                            <button class="share-btn" onclick="copyShareLink()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Copy Share Link
+                            </button>
+                            <div class="rename-section">
+                                <input type="text" id="fileName" value="video_muted" class="rename-input" placeholder="Enter filename">
+                                <button class="rename-btn" onclick="renameFile()">Rename</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn secondary" onclick="window.location.href='upload.html'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="17,8 12,3 7,8" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Process Another Video
+                    </button>
+                    <button class="action-btn" onclick="reprocessVideo()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <polyline points="23,4 23,10 17,10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Re-process with Different Settings
+                    </button>
+                </div>
+
+                <!-- Premium Upgrade Banner -->
+                <div class="premium-banner">
+                    <div class="premium-content">
+                        <div class="premium-icon">✨</div>
+                        <div class="premium-text">
+                            <h4>Upgrade to Premium</h4>
+                            <p>Get unlimited conversions, faster processing, and batch uploads</p>
+                        </div>
+                        <button class="premium-btn" onclick="window.location.href='pricing.html'">
+                            Upgrade Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Particles -->
+    <div class="success-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon">✅</span>
+            <span class="toast-message">Link copied to clipboard!</span>
+        </div>
+    </div>
+
+    <script src="scripts/result.js"></script>
+</body>
+</html>

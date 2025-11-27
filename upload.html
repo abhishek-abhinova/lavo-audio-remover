@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video - lavo</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/upload.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-text">lavo</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="support.html" class="nav-link">Support</a>
+                <a href="login.html" class="nav-link login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+        <div class="container">
+            <div class="upload-header">
+                <h1>Upload Your Video</h1>
+                <p>Select a video file to remove audio or extract audio tracks</p>
+            </div>
+
+            <div class="upload-container">
+                <!-- File Upload Area -->
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-dropzone" id="dropzone">
+                        <div class="upload-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3>Drop your video here</h3>
+                        <p>or click to browse files</p>
+                        <input type="file" id="fileInput" accept="video/*" hidden>
+                        <button class="browse-btn" onclick="document.getElementById('fileInput').click()">
+                            Browse Files
+                        </button>
+                        <div class="upload-info">
+                            <span>Max file size: 100MB (Free) • 2GB (Premium)</span>
+                            <span>Supported: MP4, AVI, MOV, MKV, WebM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Preview (Hidden initially) -->
+                <div class="file-preview" id="filePreview" style="display: none;">
+                    <div class="preview-card">
+                        <div class="preview-thumbnail">
+                            <video id="videoPreview" controls></video>
+                        </div>
+                        <div class="preview-details">
+                            <h3 id="fileName">video.mp4</h3>
+                            <div class="file-info">
+                                <span id="fileSize">25.4 MB</span>
+                                <span id="fileDuration">2:34</span>
+                                <span id="fileResolution">1920x1080</span>
+                            </div>
+                            <button class="replace-btn" onclick="replaceFile()">
+                                Replace Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Options Panel -->
+                <div class="options-panel">
+                    <h3>Processing Options</h3>
+                    
+                    <div class="option-group">
+                        <div class="option-item">
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="removeAudio" checked>
+                                <label for="removeAudio" class="toggle-label">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="option-content">
+                                <h4>Remove Audio</h4>
+                                <p>Create a silent version of your video</p>
+                            </div>
+                        </div>
+
+                        <div class="option-item">
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="extractAudio">
+                                <label for="extractAudio" class="toggle-label">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="option-content">
+                                <h4>Extract Audio Only</h4>
+                                <p>Save the audio track as MP3 file</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quality-selector">
+                        <h4>Output Quality</h4>
+                        <div class="quality-options">
+                            <label class="quality-option">
+                                <input type="radio" name="quality" value="original" checked>
+                                <span class="quality-label">
+                                    <strong>Original</strong>
+                                    <small>Best quality, larger file</small>
+                                </span>
+                            </label>
+                            <label class="quality-option">
+                                <input type="radio" name="quality" value="high">
+                                <span class="quality-label">
+                                    <strong>High</strong>
+                                    <small>Great quality, balanced size</small>
+                                </span>
+                            </label>
+                            <label class="quality-option">
+                                <input type="radio" name="quality" value="medium">
+                                <span class="quality-label">
+                                    <strong>Medium</strong>
+                                    <small>Good quality, smaller size</small>
+                                </span>
+                            </label>
+                            <label class="quality-option">
+                                <input type="radio" name="quality" value="compressed">
+                                <span class="quality-label">
+                                    <strong>Compressed</strong>
+                                    <small>Smallest size, lower quality</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Button -->
+                <div class="process-section">
+                    <button class="process-btn" id="processBtn" onclick="startProcessing()" disabled>
+                        <span class="btn-icon">⚡</span>
+                        Start Processing
+                    </button>
+                    <p class="process-info">
+                        Processing typically takes 30-60 seconds
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="scripts/upload.js"></script>
+</body>
+</html>
