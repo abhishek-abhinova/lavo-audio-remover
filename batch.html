@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Downloader - lavo</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/batch.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="2"/>
+                        <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2"/>
+                        <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span class="logo-text">lavo</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="tools.html" class="nav-link">Tools</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Batch Section -->
+    <section class="batch-section">
+        <div class="container">
+            <div class="batch-header">
+                <div class="premium-badge-large">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Premium Feature
+                </div>
+                <h1>Batch Video Downloader</h1>
+                <p>Process multiple video links simultaneously with premium speed and quality</p>
+            </div>
+
+            <div class="batch-container">
+                <!-- Multi-Link Input -->
+                <div class="multi-input-section">
+                    <h3>Add Video Links</h3>
+                    <div class="input-area">
+                        <textarea 
+                            id="batchLinks" 
+                            placeholder="Paste multiple video links here (one per line)&#10;&#10;https://youtube.com/watch?v=...&#10;https://instagram.com/p/...&#10;https://facebook.com/watch?v=...&#10;https://twitter.com/user/status/..."
+                            rows="8"
+                        ></textarea>
+                        <div class="input-actions">
+                            <button class="clear-btn" onclick="clearLinks()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <polyline points="3,6 5,6 21,6" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6m3,0V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Clear All
+                            </button>
+                            <button class="analyze-btn" onclick="analyzeLinks()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                    <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Analyze Links
+                            </button>
+                        </div>
+                    </div>
+                    <div class="link-counter">
+                        <span id="linkCount">0</span> links detected
+                    </div>
+                </div>
+
+                <!-- Detected Videos -->
+                <div class="detected-videos" id="detectedVideos" style="display: none;">
+                    <h3>Detected Videos</h3>
+                    <div class="videos-list" id="videosList">
+                        <!-- Videos will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Bulk Settings -->
+                <div class="bulk-settings">
+                    <h3>Bulk Settings</h3>
+                    <div class="settings-grid">
+                        <div class="setting-group">
+                            <h4>Default Quality</h4>
+                            <select id="bulkQuality" class="quality-select">
+                                <option value="360p">360p - Small file</option>
+                                <option value="480p">480p - Good quality</option>
+                                <option value="720p" selected>720p - High quality</option>
+                                <option value="1080p">1080p - Full HD</option>
+                                <option value="4k">4K - Ultra HD (Premium)</option>
+                            </select>
+                        </div>
+                        <div class="setting-group">
+                            <h4>Audio Options</h4>
+                            <div class="audio-toggles">
+                                <label class="toggle-option">
+                                    <input type="checkbox" id="bulkRemoveAudio">
+                                    <span class="toggle-text">Remove Audio</span>
+                                </label>
+                                <label class="toggle-option">
+                                    <input type="checkbox" id="bulkExtractAudio">
+                                    <span class="toggle-text">Extract MP3</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="setting-group">
+                            <h4>Processing</h4>
+                            <div class="processing-toggles">
+                                <label class="toggle-option">
+                                    <input type="checkbox" id="bulkCompress">
+                                    <span class="toggle-text">Compress Videos</span>
+                                </label>
+                                <label class="toggle-option">
+                                    <input type="checkbox" id="bulkParallel" checked>
+                                    <span class="toggle-text">Parallel Processing</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="progress-section" id="progressSection" style="display: none;">
+                    <h3>Processing Progress</h3>
+                    <div class="overall-progress">
+                        <div class="progress-header">
+                            <span>Overall Progress</span>
+                            <span id="overallPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="overallProgress"></div>
+                        </div>
+                        <div class="progress-stats">
+                            <span id="completedCount">0</span> of <span id="totalCount">0</span> completed
+                        </div>
+                    </div>
+                    <div class="individual-progress" id="individualProgress">
+                        <!-- Individual video progress will be shown here -->
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-section">
+                    <button class="bulk-download-btn" id="bulkDownloadBtn" onclick="startBulkDownload()" disabled>
+                        <div class="btn-content">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" stroke="currentColor" stroke-width="2"/>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9 14l2 2 4-4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Start Bulk Download</span>
+                        </div>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <div class="action-info">
+                        <p>Premium users can process up to 50 videos simultaneously</p>
+                    </div>
+                </div>
+
+                <!-- Error Detection -->
+                <div class="error-section" id="errorSection" style="display: none;">
+                    <h3>Invalid URLs Detected</h3>
+                    <div class="error-list" id="errorList">
+                        <!-- Error items will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="scripts/batch.js"></script>
+</body>
+</html>
